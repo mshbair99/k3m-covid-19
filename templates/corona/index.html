@@ -1,0 +1,292 @@
+{% extends 'corona/base.html' %}
+
+{% block Mhome %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Tailwind Starter Template - Day Admin Template: Tailwind Toolbox</title>
+        <meta name="description" content="description here">
+        <meta name="keywords" content="keywords,here">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+              integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+              crossorigin="anonymous">
+        <link href="https://unpkg.com/tailwindcss@next/dist/tailwind.min.css" rel="stylesheet">
+        <!--Replace with your tailwind.css once created-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"
+                integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
+        <style type="text/css">/* Chart.js */
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }</style>
+
+
+    </head>
+
+    <body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+
+    <!--Container-->
+    <div class="container w-full mx-auto pt-20">
+        <p align="Center" , style="font-size: 40px ">World Wide Cases</p>
+
+        <div class="w-full px-4 md:px-0 md:mt-8 mb-16 text-gray-800 leading-normal">
+
+            <!--Console Content-->
+
+            <div class="flex flex-wrap">
+                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                    <!--Metric Card-->
+                    <div class="bg-white border rounded shadow p-2">
+                        <div class="flex flex-row items-center">
+                            <div class="flex-shrink pr-4">
+                                <div class="rounded p-3 bg-blue-600"><img
+                                        src="https://img.icons8.com/windows/64/000000/coronavirus.png"></div>
+                            </div>
+                            <div class="flex-1 text-right md:text-center">
+                                <h3 class="font-bold uppercase text-blue-500">Coronavirus Cases:</h3>
+                                <h3 class="font-bold text-3xl">{{ cases }} <span class="text-red-500"><i
+                                        class="fas fa-caret-up"></i></span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/Metric Card-->
+                </div>
+                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                    <!--Metric Card-->
+                    <div class="bg-white border rounded shadow p-2">
+                        <div class="flex flex-row items-center">
+                            <div class="flex-shrink pr-4">
+                                <div class="rounded p-3 bg-red-600"><img
+                                        src="https://img.icons8.com/material-outlined/64/000000/die-in-bed.png"/></div>
+                            </div>
+                            <div class="flex-1 text-right md:text-center">
+                                <h3 class="font-bold uppercase text-black-500">Deaths:</h3>
+                                <h3 class="font-bold text-3xl">{{ deaths }} <span class="text-black-500"></span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/Metric Card-->
+                </div>
+                <div class="w-full md:w-1/2 xl:w-1/3 p-3">
+                    <!--Metric Card-->
+                    <div class="bg-white border rounded shadow p-2">
+                        <div class="flex flex-row items-center">
+                            <div class="flex-shrink pr-4">
+                                <div class="rounded p-3 bg-green-600"><img
+                                        src="https://img.icons8.com/windows/64/000000/heart-health.png"></div>
+                            </div>
+                            <div class="flex-1 text-right md:text-center">
+                                <h3 class="font-bold uppercase text-green-500">Recovered</h3>
+                                <h3 class="font-bold text-3xl">{{ cured }} <span class="text-green-600"><i
+                                        class="fas fa-caret-up"></i></span></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/Metric Card-->
+                </div>
+
+
+                <!--Divider-->
+                <hr class="border-b-2 border-gray-400 my-8 mx-4">
+
+                <div class="flex flex-row flex-wrap flex-grow mt-2">
+
+                    <div class="w-full md:w-1/2 p-3">
+                        <!--Graph Card-->
+                        <div class="bg-white border rounded shadow">
+                            <div class="border-b p-3">
+                                <h5 class="font-bold uppercase text-gray-600">Highest by total cases</h5>
+                            </div>
+                            <div class="p-5">
+                                <div class="chartjs-size-monitor"
+                                     style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                    <div class="chartjs-size-monitor-expand"
+                                         style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                                    </div>
+                                    <div class="chartjs-size-monitor-shrink"
+                                         style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                        <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                                    </div>
+                                </div>
+                                <canvas id="chartjs-7" class="chartjs chartjs-render-monitor" width="717" height="358"
+                                        style="display: block; height: 287px; width: 574px;"></canvas>
+                                <script>
+                                    new Chart(document.getElementById("chartjs-7"), {
+                                        "type": "bar",
+                                        "data": {
+                                            "labels": ["USA", "SPAIN", "ITALY", "FRANCE"],
+                                            "datasets": [{
+                                                "label": "Total Cases",
+                                                "data": [{{UScase}}, {{ SPcase }}, {{ ITcase }}, {{ FRcase }}],
+                                                "borderColor": "rgb(54, 162, 235)",
+                                                "backgroundColor": "rgba(54, 162, 235, 0.2)"
+                                            }, {
+                                                "label": "Total recoverd",
+                                                "data": [{{ UScure }}, {{ SPcure }}, {{ ITcure }}, {{ FRcure }}],
+                                                "type": "line",
+                                                "fill": false,
+                                                "borderColor": "rgb(34, 139, 34)"
+                                            }]
+                                        },
+                                        "options": {
+                                            "scales": {
+                                                "yAxes": [{
+                                                    "ticks": {
+                                                        "beginAtZero": true
+                                                    }
+                                                }]
+                                            }
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!--/Graph Card-->
+                    </div>
+
+                    <div class="w-full md:w-1/2 p-3">
+                        <!--Graph Card-->
+                        <div class="bg-white border rounded shadow">
+                            <div class="border-b p-3">
+                                <h5 class="font-bold uppercase text-gray-600">Saudi Arabia Current State</h5>
+                            </div>
+                            <div class="p-5">
+                                <div class="chartjs-size-monitor"
+                                     style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">                                    <div class="chartjs-size-monitor-expand"
+                                         style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+                                    </div>
+                                    <div class="chartjs-size-monitor-shrink"
+                                         style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                        <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                                    </div>
+                                </div>
+                                <canvas id="chartjs-4" class="chartjs chartjs-render-monitor" width="717" height="358"
+                                        style="display: block; height: 287px; width: 574px;"></canvas>
+                                <script>
+                                    new Chart(document.getElementById("chartjs-4"), {
+                                        "type": "doughnut",
+                                        "data": {
+                                            "labels": ["Cases", "Deaths", "Recoverd"],
+                                            "datasets": [{
+                                                "label": "Issues",
+                                                "data": [{{ Sacase }}, {{ Sadeath }}, {{ Sacure }}],
+                                                "backgroundColor": ["rgb(54, 162, 235)", "rgb(111, 111, 111)", "rgb(34, 139, 86)"]
+                                            }]
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <!--/Graph Card-->
+                    </div>
+
+
+
+
+
+
+                </div>
+
+                <!--/ Console Content-->
+
+            </div>
+
+
+        </div>
+        <!--/container-->
+
+
+        <script>
+            /*Toggle dropdown list*/
+            /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+
+            var userMenuDiv = document.getElementById("userMenu");
+            var userMenu = document.getElementById("userButton");
+
+            var navMenuDiv = document.getElementById("nav-content");
+            var navMenu = document.getElementById("nav-toggle");
+
+            document.onclick = check;
+
+            function check(e) {
+                var target = (e && e.target) || (event && event.srcElement);
+
+                //User Menu
+                if (!checkParent(target, userMenuDiv)) {
+                    // click NOT on the menu
+                    if (checkParent(target, userMenu)) {
+                        // click on the link
+                        if (userMenuDiv.classList.contains("invisible")) {
+                            userMenuDiv.classList.remove("invisible");
+                        } else {
+                            userMenuDiv.classList.add("invisible");
+                        }
+                    } else {
+                        // click both outside link and outside menu, hide menu
+                        userMenuDiv.classList.add("invisible");
+                    }
+                }
+
+                //Nav Menu
+                if (!checkParent(target, navMenuDiv)) {
+                    // click NOT on the menu
+                    if (checkParent(target, navMenu)) {
+                        // click on the link
+                        if (navMenuDiv.classList.contains("hidden")) {
+                            navMenuDiv.classList.remove("hidden");
+                        } else {
+                            navMenuDiv.classList.add("hidden");
+                        }
+                    } else {
+                        // click both outside link and outside menu, hide menu
+                        navMenuDiv.classList.add("hidden");
+                    }
+                }
+
+            }
+
+            function checkParent(t, elm) {
+                while (t.parentNode) {
+                    if (t == elm) {
+                        return true;
+                    }
+                    t = t.parentNode;
+                }
+                return false;
+            }
+        </script>
+
+
+    </div>
+
+    </body>
+
+    </html>
+
+{% endblock Mhome %}

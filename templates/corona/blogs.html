@@ -1,0 +1,38 @@
+{% extends 'corona/base2.html' %}
+{% block contact %}
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1>Covid-19 Tracker Blog</h1>
+        <p class="lead text-muted">Here is the updated news about coronavirus covid-19. May Allah protect all
+            people.</p>
+        <p>
+            <a href="{% url 'contact' %}" class="btn btn-primary my-2">Join Us</a>
+        </p>
+    </div>
+</section>
+<div class="row">
+    {% for x in var_1.all %}
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <h3>{{x.title}}</h3>
+            <div class="card-body">
+                <p class="card-text">{{x.summary}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href={% url 'detail' x.id %} class = "btn btn-sm btn-outline-secondary">View Full Page</a>
+                    </div>
+                    <small class="text-muted">{{ x.pub_date }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<footer class="text-muted">
+
+    <div class="container">
+        <p class="float-right">
+            <a href="{% url 'home' %}">Go to Covid-19 Socket Page</a>
+    </div>
+</footer>
+{% endblock contact %}

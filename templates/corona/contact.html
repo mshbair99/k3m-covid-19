@@ -1,0 +1,38 @@
+{% extends 'corona/base2.html' %}
+
+{% block contact %}
+
+    <h2 class="h1-responsive font-weight-bold text-center my-4 "><b>Become a Blogger</b></h2>
+    <p class="text-center w-responsive mx-auto mb-5">If you wish to help your society we would be pleased to accept you as a blogger ♥. </p>
+
+    <form id = "contact-form", name = "contact-form", action="{% url 'contact' %}", method="post">
+    {% csrf_token %}
+     <div class="form-group">
+            <label style="margin-left: 10px;" for="name">name</label>
+            <input type="text" class="form-control" name="name" id="exampleFormControlInput1">
+        </div>
+        <div class="form-group">
+            <label style="margin-left: 10px;" for="Email">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+            <label style="margin-left: 10px;" for="subject">Major</label>
+            <input type="text" class="form-control" name="subject" id="exampleFormControlInput1">
+        </div>
+
+        <div class="form-group">
+            <label style="margin-left: 10px;" for="message">Tell us about Yourself!</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="messages" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+
+    </form>
+<footer class="text-muted">
+
+    <div class="container">
+        <p class="float-right">
+            <a href="{% url 'home' %}">Go to Covid-19 Socket Page</a>
+    </div>
+</footer>
+
+{% endblock contact %}

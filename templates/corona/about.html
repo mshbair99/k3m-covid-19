@@ -1,0 +1,29 @@
+{% extends 'corona/base2.html' %}
+{% load static %}
+{% block contact %}
+
+   <section class="jumbotron text-center">
+        <div class="container">
+            <h1>About Us</h1>
+            <p class="lead text-muted">Welcome to our website, we are the Web Application & Development Students of University of Prince Mugrin,
+                we have launched our website for Covid-19 tracking. Here are the list of students who worked on this project:</p>
+            <h4> Khaled Redhwan (Leader)</h4>
+            <h4> Mohammad Bayazid</h4>
+            <h4> Moa'yad Shbair</h4>
+            <h4> Mehad Hammodah</h4>
+
+        <p class="lead text-muted"> we would like to thank you for browsing our website!</p>
+            <p>
+                <a href="{% url 'contact' %}" class="btn btn-primary my-2">Join us</a>
+            </p>
+        </div>
+
+    </section>
+        <footer class="text-muted">
+                                    <div class="container">
+                                        <p class="float-right">
+                                            <a href="{% url 'home' %}">Go to Covid-19 Socket Page</a>
+                                    </div>
+                                </footer>
+
+{% endblock contact %}

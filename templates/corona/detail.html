@@ -1,0 +1,23 @@
+{% extends 'corona/base2.html' %}
+{% load static %}
+{% block contact %}
+
+    <div class="container">
+        <br>
+        <br>
+        <h3>{{ detail_blog.title }}</h3>
+        <br>
+        <body>{{ detail_blog.body }}</body>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    </div>
+ <footer class="text-muted">
+                                    <div class="container">
+                                        <p class="float-right">
+                                            <a href="{% url 'home' %}">Go to Covid-19 Socket Page</a>
+                                    </div>
+                                </footer>
+{% endblock contact %}
