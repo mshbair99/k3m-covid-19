@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from .models import contact, Blog
 import pandas as pd
+import plotly as k3m
 import requests
 from bs4 import BeautifulSoup
 import plotly.graph_objs as go
+
 
 page = requests.get('https://www.worldometers.info/coronavirus/')
 soup = BeautifulSoup(page.content, 'html.parser')
@@ -146,11 +148,9 @@ def M_Cases(request):
             projection_type='equirectangular'
         )
     )
-    data = fig.show()
-    return render(request, 'corona/index.html',
-                  {'cases': cases, 'deaths': deaths, 'cured': cured, 'Sacase': Sacase, 'Sadeath': Sadeath,
-                   'Sacure': Sacure, 'UScase': USAcase, 'UScure': USAcure, 'ITcase': Italycase, 'ITcure': Italycure,
-                   'FRcase': Francecase, 'FRcure': Francecure, 'SPcase': Spainacase, 'SPcure': Spaincure})
+    k3m.offline.plot(fig, filename="templates/corona/Cases.html")
+    return M_Home(request)
+
 
 
 def M_Deaths(request):
@@ -193,12 +193,10 @@ def M_Deaths(request):
             projection_type='equirectangular'
         )
     )
-    data = fig.show()
+    k3m.offline.plot(fig, filename="templates/Deaths/.html")
+    return M_Home(request)
 
-    return render(request, 'corona/index.html',
-                  {'cases': cases, 'deaths': deaths, 'cured': cured, 'Sacase': Sacase, 'Sadeath': Sadeath,
-                   'Sacure': Sacure, 'UScase': USAcase, 'UScure': USAcure, 'ITcase': Italycase, 'ITcure': Italycure,
-                   'FRcase': Francecase, 'FRcure': Francecure, 'SPcase': Spainacase, 'SPcure': Spaincure})
+
 
 
 def M_Recovered(request):
@@ -241,8 +239,6 @@ def M_Recovered(request):
             projection_type='equirectangular'
         )
     )
-    fig.show()
-    return render(request, 'corona/index.html',
-                  {'cases': cases, 'deaths': deaths, 'cured': cured, 'Sacase': Sacase, 'Sadeath': Sadeath,
-                   'Sacure': Sacure, 'UScase': USAcase, 'UScure': USAcure, 'ITcase': Italycase, 'ITcure': Italycure,
-                   'FRcase': Francecase, 'FRcure': Francecure, 'SPcase': Spainacase, 'SPcure': Spaincure})
+    k3m.offline.plot(fig, filename="templates/corona/Recovers.html")
+    return M_Home(request)
+
