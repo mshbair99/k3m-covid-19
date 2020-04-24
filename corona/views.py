@@ -193,7 +193,7 @@ def M_Deaths(request):
             projection_type='equirectangular'
         )
     )
-    k3m.offline.plot(fig, filename="templates/Deaths/.html")
+    k3m.offline.plot(fig, filename="templates/Deaths.html")
     return M_Home(request)
 
 
