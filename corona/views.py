@@ -124,12 +124,12 @@ def M_Cases(request):
 
     df = pd.DataFrame({'Location': Location, 'Cases': Cases})
 
-    df.to_csv("Corona.csv", index=False)
-
     for k in range(len(Cases)):
         Cases[k] = Cases[k].translate({ord(','): None})
 
     Cases[7] = ''
+    Cases[126] = int(Cases[126]) + int(Cases[30])
+    Cases[30] = 'This country does not exist'
 
     fig = go.Figure(data=go.Choropleth(
         locations=df['Location'],
@@ -148,8 +148,8 @@ def M_Cases(request):
             projection_type='equirectangular'
         )
     )
-    k3m.offline.plot(fig, filename="templates/corona/Cases.html")
-    return M_Home(request)
+    k3m.offline.plot(fig, filename="templates/corona/Cases.html", auto_open=False)
+    return render(request, 'corona/Cases.html')
 
 
 
@@ -175,7 +175,9 @@ def M_Deaths(request):
     for k in range(len(Victims)):
         Victims[k] = Victims[k].translate({ord(','): None})
     Victims[7] = ''
-
+    M_Deaths[7] = ''
+    M_Deaths[126] = int(M_Deaths[126]) + int(M_Deaths[30])
+    M_Deaths[30] = 'This country does not exist'
     fig = go.Figure(data=go.Choropleth(
         locations=df['Location'],
         locationmode='country names',
@@ -193,8 +195,8 @@ def M_Deaths(request):
             projection_type='equirectangular'
         )
     )
-    k3m.offline.plot(fig, filename="templates/Deaths.html")
-    return M_Home(request)
+    k3m.offline.plot(fig, filename="templates/corona/Death.html", auto_open=False)
+    return render(request, 'corona/Deaths.html')
 
 
 
@@ -221,6 +223,9 @@ def M_Recovered(request):
         Recovered[k] = Recovered[k].translate({ord(','): None})
 
     Recovered[7] = ''
+    M_Recovered[7] = ''
+    M_Recovered[126] = int(M_Recovered[126]) + int(M_Recovered[30])
+    M_Recovered[30] = 'This country does not exist'
 
     fig = go.Figure(data=go.Choropleth(
         locations=df['Location'],
@@ -239,6 +244,6 @@ def M_Recovered(request):
             projection_type='equirectangular'
         )
     )
-    k3m.offline.plot(fig, filename="templates/corona/Recovers.html")
-    return M_Home(request)
+    k3m.offline.plot(fig, filename="templates/corona/Recovered.html", auto_open=False)
+    return render(request, 'corona/Recovered.html')
 
