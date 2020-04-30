@@ -152,28 +152,23 @@ def M_Cases(request):
     return render(request, 'corona/Cases.html')
 
 
-
 def M_Deaths(request):
     page = requests.get('https://www.worldometers.info/coronavirus/')
-
     soup = BeautifulSoup(page.content, 'html.parser')
-
     Location = []
     Victims = []
     df = pd.DataFrame(columns=["Location", "Victims"])
-
     table_body = soup.find('tbody')
     table_rows = table_body.find_all('tr')
-
     for tr in table_rows:
         td = tr.find_all('td')
         Location.append(td[0].text)
         Victims.append(td[3].text)
-
     df = pd.DataFrame({'Location': Location, 'Victims': Victims})
 
     for k in range(len(Victims)):
         Victims[k] = Victims[k].translate({ord(','): None})
+
     Victims[7] = ''
     Victims[126] = int(Victims[126]) + int(Victims[30])
     Victims[30] = 'This country does not exist'
@@ -194,7 +189,7 @@ def M_Deaths(request):
             projection_type='equirectangular'
         )
     )
-    k3m.offline.plot(fig, filename="templates/corona/Death.html", auto_open=False)
+    k3m.offline.plot(fig, filename="templates/corona/Deaths.html", auto_open=False)
     return render(request, 'corona/Deaths.html')
 
 
@@ -221,7 +216,6 @@ def M_Recovered(request):
     for k in range(len(Recovered)):
         Recovered[k] = Recovered[k].translate({ord(','): None})
 
-    Recovered[7] = ''
     Recovered[7] = ''
     Recovered[126] = int(Recovered[126]) + int(Recovered[30])
     Recovered[30] = 'This country does not exist'
