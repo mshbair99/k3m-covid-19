@@ -175,9 +175,9 @@ def M_Deaths(request):
     for k in range(len(Victims)):
         Victims[k] = Victims[k].translate({ord(','): None})
     Victims[7] = ''
-    M_Deaths[7] = ''
-    M_Deaths[126] = int(M_Deaths[126]) + int(M_Deaths[30])
-    M_Deaths[30] = 'This country does not exist'
+    Victims[7] = ''
+    Victims[126] = int(Victims[126]) + int(Victims[30])
+    Victims[30] = 'This country does not exist'
     fig = go.Figure(data=go.Choropleth(
         locations=df['Location'],
         locationmode='country names',
@@ -223,9 +223,9 @@ def M_Recovered(request):
         Recovered[k] = Recovered[k].translate({ord(','): None})
 
     Recovered[7] = ''
-    M_Recovered[7] = ''
-    M_Recovered[126] = int(M_Recovered[126]) + int(M_Recovered[30])
-    M_Recovered[30] = 'This country does not exist'
+    Recovered[7] = ''
+    Recovered[126] = int(Recovered[126]) + int(Recovered[30])
+    Recovered[30] = 'This country does not exist'
 
     fig = go.Figure(data=go.Choropleth(
         locations=df['Location'],
