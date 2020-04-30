@@ -175,7 +175,6 @@ def M_Deaths(request):
     for k in range(len(Victims)):
         Victims[k] = Victims[k].translate({ord(','): None})
     Victims[7] = ''
-    Victims[7] = ''
     Victims[126] = int(Victims[126]) + int(Victims[30])
     Victims[30] = 'This country does not exist'
     fig = go.Figure(data=go.Choropleth(
