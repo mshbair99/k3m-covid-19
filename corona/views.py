@@ -127,9 +127,11 @@ def M_Cases(request):
     for k in range(len(Cases)):
         Cases[k] = Cases[k].translate({ord(','): None})
 
+    index_of_occupied_country = Location.index('Israel')
+    index_of_Palestine_country = Location.index('Palestine')
     Cases[7] = ''
-    Cases[126] = int(Cases[126]) + int(Cases[30])
-    Cases[30] = 'This country does not exist'
+    Cases[index_of_Palestine_country] = int(Cases[index_of_Palestine_country]) + int(Cases[index_of_occupied_country])
+    Cases[index_of_occupied_country] = 'This country does not excist'
 
     fig = go.Figure(data=go.Choropleth(
         locations=df['Location'],
@@ -169,9 +171,11 @@ def M_Deaths(request):
     for k in range(len(Victims)):
         Victims[k] = Victims[k].translate({ord(','): None})
 
+    index_of_occupied_country = Location.index('Israel')
+    index_of_Palestine_country = Location.index('Palestine')
     Victims[7] = ''
-    Victims[126] = int(Victims[126]) + int(Victims[30])
-    Victims[30] = 'This country does not exist'
+    Victims[index_of_Palestine_country] = int(Victims[index_of_Palestine_country]) + int(Victims[index_of_occupied_country])
+    Victims[index_of_occupied_country] = 'This country does not excist'
     fig = go.Figure(data=go.Choropleth(
         locations=df['Location'],
         locationmode='country names',
@@ -216,9 +220,11 @@ def M_Recovered(request):
     for k in range(len(Recovered)):
         Recovered[k] = Recovered[k].translate({ord(','): None})
 
+    index_of_occupied_country = Location.index('Israel')
+    index_of_Palestine_country = Location.index('Palestine')
     Recovered[7] = ''
-    Recovered[126] = int(Recovered[126]) + int(Recovered[30])
-    Recovered[30] = 'This country does not exist'
+    Recovered[index_of_Palestine_country] = int(Recovered[index_of_Palestine_country]) + int(Recovered[index_of_occupied_country])
+    Recovered[index_of_occupied_country] = 'This country does not excist'
 
     fig = go.Figure(data=go.Choropleth(
         locations=df['Location'],
